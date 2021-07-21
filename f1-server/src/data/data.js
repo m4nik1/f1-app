@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { json } = require("express");
 
 function dataPull() 
 {
@@ -10,8 +9,9 @@ function dataPull()
                         'Time': []
                         }
     axios({
-        method:"GET",
-        url: "https://ergast.com/api/f1/current/last/results.json",
+        method:"POST",
+        url: "http://ergast.com/api/f1/current/last/results.json?",
+        respnseType: 'json'
     })
 
     .then(function(response) {
