@@ -1,11 +1,24 @@
 import React from "react";
+import axios from "axios";
+import Button from 'react-bootstrap/Button';
 import "../CSS/content.css"
 
 export default function Home()
 {
+    function request() {
+        axios({
+            method:"get",
+            url:"http://localhost:8080/test",
+            data: {
+                first: "options"
+            }
+        })
+    }
+
     return (
         <div className="content">
             <h1>Welcome to the F1 app!</h1>
+            <Button onClick={request}>Make POST Request</Button>
         </div>
     )
 }

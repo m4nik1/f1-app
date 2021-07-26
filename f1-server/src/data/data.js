@@ -26,7 +26,7 @@ async function dataPull()
                 driverData["Time"].push("NA")
             }
         }
-        console.log(driverData)
+        // console.log(driverData)
 
     } catch (error) {
         console.log("THERE IS AN ERROR!!!")

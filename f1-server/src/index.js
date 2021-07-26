@@ -11,6 +11,10 @@ app.use(function(req, res, next) {
     next();
 })
 
+app.get("/test", (req, res) => {
+    console.log("connection Established")
+    // res.send("hello world")
+})
 
 app.listen(8080, () => {
     console.log("Listening on port 8080")
