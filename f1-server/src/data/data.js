@@ -1,27 +1,37 @@
 const axios = require("axios");
 
-function dataPull() 
+async function dataPull() 
 {
-    let jsonData;
     const driverData = {'position': [],
                         'drivers': [],
                         'Constructor/Team': [],
                         'Time': []
                         }
-    axios({
-        method:"POST",
-        url: "http://ergast.com/api/f1/current/last/results.json?",
-        respnseType: 'json'
-    })
 
-    .then(function(response) {
-        jsonData = response.data;
-        // console.log(response.data)
+    try {
+        const res = await axios.get("http://ergast.com/api/f1/current/last/results.json")
 
-        for(test in jsonData["MRData"]["RaceTable"]["Races"][0]["Results"]) {
-            // driverData.drivers.push(test["Driver"]["driverId"]);
+        let results = res.data["MRData"]["RaceTable"]["Races"][0]["Results"];
+
+        for(drivers of results)
+        {
+            driverData["drivers"].push(drivers["Driver"]["driverId"])
+            driverData["position"].push(drivers["position"])
+            driverData["Constructor/Team"].push(drivers["Constructor"]["constructorId"])
+            if(drivers["Time"])
+            {
+                driverData["Time"].push(drivers["Time"])
+            }
+            else {
+                driverData["Time"].push("NA")
+            }
         }
-    })
+        console.log(driverData)
+
+    } catch (error) {
+        console.log("THERE IS AN ERROR!!!")
+        console.error(error)
+    }
 }
 
 module.exports = { dataPull };
