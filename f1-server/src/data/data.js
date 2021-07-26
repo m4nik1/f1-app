@@ -32,6 +32,8 @@ async function dataPull()
         console.log("THERE IS AN ERROR!!!")
         console.error(error)
     }
+
+    return driverData;
 }
 
 module.exports = { dataPull };

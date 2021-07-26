@@ -7,11 +7,11 @@ export default function Home()
 {
     function request() {
         axios({
-            method:"get",
-            url:"http://localhost:8080/test",
-            data: {
-                first: "options"
-            }
+            method:"post",
+            url:"http://localhost:8080/test"
+        })
+        .then(function(res) {
+            console.log(res.data);
         })
     }
 

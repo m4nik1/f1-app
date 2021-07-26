@@ -3,6 +3,12 @@ const app = express();
 const dataFetch = require("./data/data.js")
 
 const port = 8080;
+let awesome;
+async function fetch() {
+    let data = await dataFetch.dataPull();
+    console.log(data)
+    awesome = data;
+}
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-origin", "*")
@@ -11,14 +17,15 @@ app.use(function(req, res, next) {
     next();
 })
 
-app.get("/test", (req, res) => {
+app.post("/test", (req, res) => {
     console.log("connection Established")
-    // res.send("hello world")
+    res.send(awesome)
 })
 
-app.listen(8080, () => {
+app.listen(port, () => {
+    fetch()
     console.log("Listening on port 8080")
-    dataFetch.dataPull()
+    // console.log(dataFetch.dataPull())s
 });
 
 // POST Request
