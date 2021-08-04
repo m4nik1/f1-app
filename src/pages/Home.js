@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button"
 import { Table } from "react-bootstrap";
+import navBar from "../components/NavBar"
 import "../CSS/content.css"
-import { data } from "jquery";
 
 
 export default class Home extends React.Component
@@ -30,6 +30,7 @@ export default class Home extends React.Component
     render() {
         return (
             <div className="content">
+                <navBar />
                 <h1>Welcome to the F1 app!</h1>
                 <Table>
                     <thead>
