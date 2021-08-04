@@ -6,7 +6,6 @@ const port = 8080;
 let awesome;
 async function fetch() {
     let data = await dataFetch.dataPull();
-    console.log(data)
     awesome = data;
 }
 
@@ -18,12 +17,12 @@ app.use(function(req, res, next) {
 })
 
 app.post("/test", (req, res) => {
-    console.log("connection Established")
+    fetch();
     res.send(awesome)
+    console.log("data has been sent")
 })
 
 app.listen(port, () => {
-    fetch()
     console.log("Listening on port 8080")
     // console.log(dataFetch.dataPull())s
 });
