@@ -1,4 +1,17 @@
 .content {
-    margin-top: 20;
-    padding-top: 20px;
+    padding-top: 200px;
+    text-align: center;
+}
+
+.NavBar {
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 25px;
+
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    
 }
